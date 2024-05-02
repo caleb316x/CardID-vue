@@ -2,10 +2,6 @@
     
     <div class="col-md-4">
         <div :class="bgdata">
-            <!-- <div v-if="data.Registration=='With Breakfast and Lunch  (₱430)'" class="cardid-header header-1">LEYTE BLENDING MEETING 2024</div>
-            <div v-if="data.Registration=='With Breakfast only (₱250)'" class="cardid-header header-2">LEYTE BLENDING MEETING 2024</div>
-            <div v-if="data.Registration=='With Lunch only  (₱280)'" class="cardid-header header-3">LEYTE BLENDING MEETING 2024</div>
-            <div v-if="data.Registration=='Registration Fee (₱100)'" class="cardid-header header-4">LEYTE BLENDING MEETING 2024</div> -->
             <div class="cardid-header">LEYTE BLENDING MEETING 2024</div>
             <div class="cardid-sub-header">
                 May 12, 2024 | Ormoc City
@@ -32,8 +28,6 @@
             }
         },
         mounted() {
-            console.log("index: ", this.dataindex+1);
-            console.log("Module: ", (this.dataindex+1)%12 === 0);
             const registration = this.data.Registration;
 
             if (registration.includes('₱100')) {

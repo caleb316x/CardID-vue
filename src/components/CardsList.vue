@@ -24,11 +24,6 @@
             v-model="jsonData"
           ></textarea
           >
-
-          <!-- <hr />
-          <button class="btn btn-primary" @click="copyToPDF">
-            import to PDF
-          </button> -->
         </div>
       </div>
     </div>
@@ -36,10 +31,7 @@
       <hr />
     </div>
     <div ref="elementToCopy" class="row printable">
-      <!-- <div  class="col-md-4"> -->
       <CardId v-for="(item, index) in Saints" :data="item" :dataindex="index" />
-      <!-- <Sticker :data="item" /> -->
-      <!-- </div> -->
     </div>
   </div>
 </template>
