@@ -10,7 +10,7 @@
                 {{data["First Name"]}} {{ data["Last Name"] }}
             </div>
             <div class="cardid-body-locality cardid-body">
-                {{data.Locality}} {{ data.Locality == "" || data.Locality == "" ? "":"," }} {{ data.Province }}
+                {{data.Locality}}{{ data.Locality == "" || data.Locality == "" ? "":"," }} {{ data.Province }}
             </div>
             <!-- <div class="cardid-ribbon ribbon-wf2"></div> -->
         </div>
