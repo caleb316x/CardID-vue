@@ -51,7 +51,8 @@ import Sticker from "./Sticker.vue";
 
 export default {
   name: "CardList",
-  components: { iddata, CardId, Sticker },
+  // components: { iddata, CardId, Sticker },
+  components: { CardId, Sticker },
   data() {
     return {
       jsonData: "",
@@ -64,6 +65,7 @@ export default {
   },
   methods: {
     handleFileUpload(event) {
+      this.Saints = [];
       const file = event.target.files[0];
       const reader = new FileReader();
 

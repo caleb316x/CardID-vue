@@ -34,19 +34,15 @@
         mounted() {
             console.log("index: ", this.dataindex+1);
             console.log("Module: ", (this.dataindex+1)%12 === 0);
-            if(this.data.Registration == 'Registration Fee (₱100)') {
+            const registration = this.data.Registration;
+
+            if (registration.includes('₱100')) {
                 this.bgdata = "cardid header-1";
-            }
-
-            if(this.data.Registration == 'With Breakfast only (₱250)') {
+            } else if (registration.includes('₱250')) {
                 this.bgdata = "cardid header-3";
-            }
-
-            if(this.data.Registration == 'With Lunch only  (₱280)') {
+            } else if (registration.includes('₱280')) {
                 this.bgdata = "cardid header-2";
-            }
-
-            if(this.data.Registration == 'With Breakfast and Lunch  (₱430)') {
+            } else if (registration.includes('₱430')) {
                 this.bgdata = "cardid header-4";
             }
         },

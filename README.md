@@ -27,3 +27,9 @@ npm run dev
 ```sh
 npm run build
 ```
+
+# URL
+
+```sh
+https://caleb316x.github.io/CardID-vue/
+```
