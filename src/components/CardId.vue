@@ -1,22 +1,25 @@
 <template>
     
-    <div :class="bgdata">
-        <!-- <div v-if="data.Registration=='With Breakfast and Lunch  (₱430)'" class="cardid-header header-1">LEYTE BLENDING MEETING 2024</div>
-        <div v-if="data.Registration=='With Breakfast only (₱250)'" class="cardid-header header-2">LEYTE BLENDING MEETING 2024</div>
-        <div v-if="data.Registration=='With Lunch only  (₱280)'" class="cardid-header header-3">LEYTE BLENDING MEETING 2024</div>
-        <div v-if="data.Registration=='Registration Fee (₱100)'" class="cardid-header header-4">LEYTE BLENDING MEETING 2024</div> -->
-        <div class="cardid-header">LEYTE BLENDING MEETING 2024</div>
-        <div class="cardid-sub-header">
-            May 12, 2024 | Ormoc City
+    <div class="col-md-4">
+        <div :class="bgdata">
+            <!-- <div v-if="data.Registration=='With Breakfast and Lunch  (₱430)'" class="cardid-header header-1">LEYTE BLENDING MEETING 2024</div>
+            <div v-if="data.Registration=='With Breakfast only (₱250)'" class="cardid-header header-2">LEYTE BLENDING MEETING 2024</div>
+            <div v-if="data.Registration=='With Lunch only  (₱280)'" class="cardid-header header-3">LEYTE BLENDING MEETING 2024</div>
+            <div v-if="data.Registration=='Registration Fee (₱100)'" class="cardid-header header-4">LEYTE BLENDING MEETING 2024</div> -->
+            <div class="cardid-header">LEYTE BLENDING MEETING 2024</div>
+            <div class="cardid-sub-header">
+                May 12, 2024 | Ormoc City
+            </div>
+            <div class="cardid-body-name cardid-body">
+                {{data["First Name"]}} {{ data["Last Name"] }}
+            </div>
+            <div class="cardid-body-locality cardid-body">
+                {{data.Locality}} {{ data.Locality == "" || data.Locality == "" ? "":"," }} {{ data.Province }}
+            </div>
+            <!-- <div class="cardid-ribbon ribbon-wf2"></div> -->
         </div>
-        <div class="cardid-body-name cardid-body">
-            {{data["First Name"]}} {{ data["Last Name"] }}
-        </div>
-        <div class="cardid-body-locality cardid-body">
-            {{data.Locality}}, {{ data.Province }}
-        </div>
-        <!-- <div class="cardid-ribbon ribbon-wf2"></div> -->
     </div>
+    <div v-if="(this.dataindex+1)%12 === 0" class="col-md-12"><br><hr><div class="printspace"></div></div>
    
   </template>
   
@@ -29,10 +32,10 @@
             }
         },
         mounted() {
-            console.log("test","hello");
+            console.log("index: ", this.dataindex+1);
+            console.log("Module: ", (this.dataindex+1)%12 === 0);
             if(this.data.Registration == 'Registration Fee (₱100)') {
                 this.bgdata = "cardid header-1";
-                console.log("hoiii")
             }
 
             if(this.data.Registration == 'With Breakfast only (₱250)') {

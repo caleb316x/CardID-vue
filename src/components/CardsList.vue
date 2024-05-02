@@ -1,4 +1,3 @@
-
 <template>
   <div class="container">
     <div class="mt-4 p-5 bg-dark text-white rounded nonprint">
@@ -11,11 +10,7 @@
           <label for="exampleFormControlInput1" class="form-label"
             >Upload cvs file</label
           >
-          <input
-            type="file"
-            class="form-control"
-            id="exampleFormControlInput1"
-          />
+          <input type="file" class = "form-control"@change="handleFileUpload" accept=".csv">
         </div>
         <div class="mb-3">
           <hr />
@@ -26,15 +21,14 @@
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
-            v-model="jsondata"
+            v-model="jsonData"
           ></textarea
-          ><br />
-          <button class="btn btn-success">Upload</button>
+          >
 
-          <hr />
+          <!-- <hr />
           <button class="btn btn-primary" @click="copyToPDF">
             import to PDF
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
@@ -42,37 +36,67 @@
       <hr />
     </div>
     <div ref="elementToCopy" class="row printable">
-      <div v-for="(item, index) in Saints" class="col-md-4">
-        <CardId :data="item" />
-        <!-- <Sticker :data="item" /> -->
-      </div>
-      
-
+      <!-- <div  class="col-md-4"> -->
+      <CardId v-for="(item, index) in Saints" :data="item" :dataindex="index" />
+      <!-- <Sticker :data="item" /> -->
+      <!-- </div> -->
     </div>
   </div>
 </template>
 
-<script >
-  import CardId from "./CardId.vue";
-  import Sticker from "./Sticker.vue";
-  import iddata from "./iddata.json";
+<script>
+import CardId from "./CardId.vue";
+import Sticker from "./Sticker.vue";
+// import iddata from "./iddata.json";
 
-  export default {
-    name: "CardList",
-    components: { iddata, CardId, Sticker },
-    data() {
-      return{
-        jsondata: "{}",
-        Saints: iddata
+export default {
+  name: "CardList",
+  components: { iddata, CardId, Sticker },
+  data() {
+    return {
+      jsonData: "",
+      Saints: [],
+      // Saints: iddata,
+    };
+  },
+  created() {
+    console.log(this.Saints);
+  },
+  methods: {
+    handleFileUpload(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const csvData = reader.result;
+        const jsonArray = this.csvJSON(csvData);
+        this.Saints = jsonArray;
+        this.jsonData = JSON.stringify(jsonArray, null, 2);
+      };
+
+      reader.readAsText(file);
+
+    },
+    csvJSON(csv) {
+      const lines = csv.split("\n");
+      const result = [];
+      const headers = lines[0].split(",");
+
+      for (let i = 1; i < lines.length; i++) {
+        const obj = {};
+        const currentline = lines[i].split(",");
+
+        for (let j = 0; j < headers.length; j++) {
+          obj[headers[j]] = currentline[j];
+        }
+
+        result.push(obj);
       }
+
+      return result;
     },
-    created() {
-      console.log(this.Saints);
-    },
-    methods: {
-      
-    },
-  }
+  },
+};
 </script>
 
 <style scoped></style>
