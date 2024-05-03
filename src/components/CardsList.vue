@@ -10,7 +10,12 @@
           <label for="exampleFormControlInput1" class="form-label"
             >Upload cvs file</label
           >
-          <input type="file" class = "form-control"@change="handleFileUpload" accept=".csv">
+          <input
+            type="file"
+            class="form-control"
+            @change="handleFileUpload"
+            accept=".csv"
+          />
         </div>
         <div class="mb-3">
           <hr />
@@ -22,16 +27,32 @@
             id="exampleFormControlTextarea1"
             rows="3"
             v-model="jsonData"
-          ></textarea
-          >
+          ></textarea>
         </div>
+      </div>
+      <div class="col-md-1">
+        <label for="exampleFormControlInput1" class="form-label"
+          >Blank ID</label
+        >
+        <input type="number" min="0" v-model="blankCard" class="form-control" />
       </div>
     </div>
     <div class="row nonprint">
       <hr />
     </div>
     <div ref="elementToCopy" class="row printable">
-      <CardId v-for="(item, index) in Saints" :data="item" :dataindex="index" />
+      <CardId
+        v-if="blankCard == 0"
+        v-for="(item, index) in Saints"
+        :data="item"
+        :dataindex="index"
+      />
+      <CardId
+        v-else
+        v-for="index in blankCard"
+        :data="blankData"
+        :dataindex="index-1"
+      />
     </div>
   </div>
 </template>
@@ -47,8 +68,18 @@ export default {
   components: { CardId, Sticker },
   data() {
     return {
+      blankCard: 0,
       jsonData: "",
       Saints: [],
+      blankData: {
+          "#": "1",
+          Province: "",
+          Locality: "",
+          "First Name": " ",
+          "Last Name": " ",
+          Registration: "₱100",
+        },
+      
       // Saints: iddata,
     };
   },
@@ -69,7 +100,6 @@ export default {
       };
 
       reader.readAsText(file);
-
     },
     csvJSON(csv) {
       const lines = csv.split("\n");

@@ -15,7 +15,7 @@
             <!-- <div class="cardid-ribbon ribbon-wf2"></div> -->
         </div>
     </div>
-    <div v-if="(this.dataindex+1)%12 === 0" class="col-md-12"><br><hr><div class="printspace"></div></div>
+    <div v-if="(this.dataindex+1)%(12) === 0" class="col-md-12"><br><hr><div class="printspace"></div></div>
    
   </template>
   
