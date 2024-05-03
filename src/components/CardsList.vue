@@ -36,6 +36,17 @@
         >
         <input type="number" min="0" v-model="blankCard" class="form-control" />
       </div>
+      <div class="col-md-3">
+        <label for="exampleFormControlInput1" class="form-label"
+          >Blank ID</label
+        >
+        <select class = "form-control" v-model="blankData.Registration">
+          <option value="100">Without Breakfast & Lunch</option>
+          <option value="250">With Breakfast</option>
+          <option value="280">With Lunch</option>
+          <option value="430">With Breakfast & Lunch</option>
+        </select>
+      </div>
     </div>
     <div class="row nonprint">
       <hr />
@@ -68,6 +79,7 @@ export default {
   components: { CardId, Sticker },
   data() {
     return {
+      blankType: 100,
       blankCard: 0,
       jsonData: "",
       Saints: [],
@@ -77,7 +89,7 @@ export default {
           Locality: "",
           "First Name": " ",
           "Last Name": " ",
-          Registration: "₱100",
+          Registration: "430",
         },
       
       // Saints: iddata,

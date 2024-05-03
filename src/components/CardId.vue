@@ -30,13 +30,13 @@
         mounted() {
             const registration = this.data.Registration;
 
-            if (registration.includes('₱100')) {
+            if (registration.includes('100')) {
                 this.bgdata = "cardid header-1";
-            } else if (registration.includes('₱250')) {
+            } else if (registration.includes('250')) {
                 this.bgdata = "cardid header-3";
-            } else if (registration.includes('₱280')) {
+            } else if (registration.includes('280')) {
                 this.bgdata = "cardid header-2";
-            } else if (registration.includes('₱430')) {
+            } else if (registration.includes('430')) {
                 this.bgdata = "cardid header-4";
             }
         },
@@ -77,7 +77,7 @@
         font-weight: bold;
         text-align: center;
         font-size: 18px;
-        padding: 4px;
+        padding: 8px;
         border-bottom: solid black 1px;
     }
     .cardid-sub-header {
@@ -96,7 +96,7 @@
     }
     .cardid-body-name{
         padding: 0px;
-        margin-top: 14px;
+        margin-top: 12px;
         font-size: 25px;
         line-height: 25px;
     }
