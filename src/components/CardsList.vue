@@ -89,7 +89,7 @@ export default {
           Locality: "",
           "First Name": " ",
           "Last Name": " ",
-          Registration: "430",
+          Registration: "100",
         },
       
       // Saints: iddata,
