@@ -54,13 +54,13 @@
     <div ref="elementToCopy" class="row printable">
       <CardId
         v-if="blankCard == 0"
-        v-for="(item, index) in Saints"
+        v-for="(item, index) in Saints" :key="item"
         :data="item"
         :dataindex="index"
       />
       <CardId
         v-else
-        v-for="index in blankCard"
+        v-for="index in blankCard" :key="blankData.Registration"
         :data="blankData"
         :dataindex="index-1"
       />

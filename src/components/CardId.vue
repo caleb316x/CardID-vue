@@ -1,8 +1,8 @@
 <template>
     
     <div class="col-md-4">
-        <div :class="bgdata">
-            <div class="cardid-header">LEYTE BLENDING MEETING 2024</div>
+        <div class="cardid">
+            <div :class="bgdata">LEYTE BLENDING MEETING 2024</div>
             <div class="cardid-sub-header">
                 May 12, 2024 | Ormoc City
             </div>
@@ -24,20 +24,23 @@
         props: ["data","dataindex"],
         data() {
             return {
-                bgdata: "cardid"
+                bgdata: "cardid-header"
             }
         },
         mounted() {
             const registration = this.data.Registration;
 
             if (registration.includes('100')) {
-                this.bgdata = "cardid header-1";
+                this.bgdata = "cardid-header header-1";
             } else if (registration.includes('250')) {
-                this.bgdata = "cardid header-3";
+                this.bgdata = "cardid-header header-2";
             } else if (registration.includes('280')) {
-                this.bgdata = "cardid header-2";
+                this.bgdata = "cardid-header header-3";
             } else if (registration.includes('430')) {
-                this.bgdata = "cardid header-4";
+                this.bgdata = "cardid-header header-4";
+            }
+            else{
+                this.bgdata = "cardid-header header-1";
             }
         },
     }
@@ -48,20 +51,20 @@
         font-family: "Century Gothic";
     }
     .header-1{
-        background-color: white;
+        background-color: rgb(0, 0, 139);
     }
     .header-2{
-        background-color: rgba(240, 255, 0,0.8);
+        background-color: rgba(240, 255, 0, 1);
     }
     .header-3{
-        background-color: rgba(22, 160, 133,0.8);
+        background-color: rgba(22, 160, 133,1);
     }
     .header-4{
-        background-color: rgba(154, 205, 50, 0.8);
+        background-color: rgba(154, 205, 50, 1);
     }
-    .header-5{
+    /* .header-5{
         background-color: teal;
-    }
+    } */
     .cardid {
         border: solid 1px black;
         /* width: 300px; */
@@ -72,7 +75,7 @@
         position: relative;
     }
     .cardid-header {
-        background-color: rgb(0, 0, 139);
+        /* background-color: rgb(0, 0, 139); */
         color: white;
         font-weight: bold;
         text-align: center;
